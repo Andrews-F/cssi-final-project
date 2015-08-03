@@ -30,7 +30,7 @@ import jinja2
 from google.appengine.ext import ndb
 
 
-JINJA_ENVIRONMENT = jinja2.Environment(
+jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
@@ -38,10 +38,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Hello Word")
+        template_vars ={}
+        template_vars["title"] = "Title"
 
-        # template = jinja_environment.get_template('index.html')
-        # self.response.out.write(template.render(dictionary_name))
+
+        template = jinja_environment.get_template('index.html')
+        self.response.out.write(template.render(template_vars))
 
 
 
