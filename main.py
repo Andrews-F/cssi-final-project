@@ -26,10 +26,14 @@
 #screw yourself
 #love you *heart emoji*
 
-import os
-import webapp2
 import jinja2
+import json
+import os
+# import subjecthandler
+import webapp2
+from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
+
 
 
 jinja_environment = jinja2.Environment(
@@ -41,7 +45,6 @@ class User(ndb.Model):
     username = ndb.StringProperty(required=True)
     password = ndb.StringProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
-
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -71,17 +74,43 @@ class LoginHandler(webapp2.RequestHandler):
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('html/home.html')
+        self.response.out.write(template.render())
 
+
+# class SubjectHandler(webapp2.RequestHandler):
+#     def get(self):
+#         template = jinja_environment.get_template('html/subject.html')
+#         self.response.out.write(template.render())
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
+        # subject = self.request.get("button")
+
+        template_params = {}
+        links = []
+        url = "http://www.khanacademy.org"
+        topic_link = "/api/v1/topic/"
+        topic_slug = "algebra"   #self.request.get("topic_name")
+        # videos = "/videos"
+
+        khan_data_source = urlfetch.fetch(url+ topic_link + topic_slug)
+        khan_json_content = khan_data_source.content
+        parsed_khan_dictionary = json.loads(khan_json_content)
+
+        for i in
+        video_url= parsed_khan_dictionary['children'][i]['url']
+
+        template_params["link"] = video_url
+        # template_params["title"] = topic_slug
+
 
         template = jinja_environment.get_template('html/subject.html')
+        self.response.out.write(template.render(template_params))
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
     ('/home', HomeHandler ),
-    ('/subject', SubjectHandler)
+    ('/subject', SubjectHandler)        #subjecthandler.SubjectHandler)
 ], debug=True)
