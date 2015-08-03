@@ -87,7 +87,7 @@ class SubjectHandler(webapp2.RequestHandler):
         # subject = self.request.get("button")
 
         template_params = {}
-        links = []
+        khan_links = []
         url = "http://www.khanacademy.org"
         topic_link = "/api/v1/topic/"
         topic_slug = "algebra"   #self.request.get("topic_name")
@@ -104,8 +104,25 @@ class SubjectHandler(webapp2.RequestHandler):
         # template_params["title"] = topic_slug
 
 
-        template = jinja_environment.get_template('html/subject.html')
-        self.response.out.write(template.render(template_params))
+
+
+        coursera_links = []
+        base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
+        search_term = self.request.get("search", "algebra")
+        course_data_source = urlfetch.fetch(base_url + search_term)
+        course_json_content = course_data_source.content
+        parsed_course_dictionary = json.loads(course_json_content)
+        coursera_length = len(parsed_course_dictionary['elements'])
+        for i in range(coursera_length):
+            #course_name = parsed_course_dictionary['elements'][i]['name']
+            course_short_name = parsed_course_dictionary['elements'][i]['shortName']
+            self.response.write(course_short_name)
+            link = "https://www.coursera.org/course/" + course_short_name
+            coursera_links.append(link)
+        self.response.write(coursera_links)
+
+        # template = jinja_environment.get_template('html/subject.html')
+        # self.response.out.write(template.render(template_params))
 
 
 app = webapp2.WSGIApplication([
