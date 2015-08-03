@@ -11,7 +11,12 @@ jinja_environment = jinja2.Environment(
     autoescape=True)
 
 
-class HomeHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('html/home.html')
+class SubjectHandler(webapp2.RequestHandler):
+    def post(self):
+        template_params = {}
+        url = "http://www.khanacademy.org"
+
+        topic = ""
+
+        template = jinja_environment.get_template('html/subject.html')
         self.response.out.write(template.render())
