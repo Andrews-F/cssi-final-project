@@ -42,12 +42,37 @@ class MainHandler(webapp2.RequestHandler):
         template_vars["title"] = "Title"
 
 
-        template = jinja_environment.get_template('index.html')
+        template = jinja_environment.get_template('title.html')
         self.response.out.write(template.render(template_vars))
 
+class LoginHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('login.html')
 
+    def post(self):
+        template = jinja_environment.get_template('login.html')
+        username = self.request.get('username')
+        password = self.request.get('password')
+        new_username = self.request.get('new_username')
+        new_password = self.request.get('new_password')
+        new_email = self.request.get('new_email')
+        #Questions:
+        #How do we  authenticate a user?
+        self.response.out.write(template.render(template_vars))
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('home.html')
+        
+
+class SubjectHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('subject.html')
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/login', LoginHandler),
+    ('/home', HomeHandler ),
+    ('/subject', SubjectHandler)
 ], debug=True)
