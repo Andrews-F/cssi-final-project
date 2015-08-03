@@ -40,8 +40,8 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write("Hello Word")
 
-        template = jinja_environment.get_template('index.html')
-        self.response.out.write(template.render(dictionary_name))
+        # template = jinja_environment.get_template('index.html')
+        # self.response.out.write(template.render(dictionary_name))
 
 
 
