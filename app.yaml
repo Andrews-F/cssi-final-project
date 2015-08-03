@@ -4,25 +4,26 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
+handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /letscss\.css
-  static_files: letscss.css
-  upload: letscss\.css
+- url: /../css/home\.css
+  static_files: ../css/home.css
+  upload: ../css/home\.css
 
 - url: /allscript\.js
   static_files: allscript.js
   upload: allscript\.js
 
-- url: /indexcover\.jpg
-  static_files: indexcover.jpg
-  upload: indexcover\.jpg
+- url: /../photos/indexcover\.jpg
+  static_files: ../photos/indexcover.jpg
+  upload: ../photos/indexcover\.jpg
 
-- url: /title\.html
-  static_files: title.html
-  upload: title\.html
+- url: /../html/title\.html
+  static_files: ../html/title.html
+  upload: ../html/title\.html
 
 - url: .*
   script: main.app
