@@ -24,6 +24,7 @@
 
 #Sofie will see this comment and delete it
 #screw yourself
+#love you *heart emoji*
 
 import os
 import webapp2
@@ -35,6 +36,11 @@ jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
+class User(ndb.Model):
+    username = ndb.StringProperty(required=True)
+    password = ndb.StringProperty(required=True)
+
 
 
 class MainHandler(webapp2.RequestHandler):
