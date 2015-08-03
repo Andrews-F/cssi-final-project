@@ -97,7 +97,7 @@ class SubjectHandler(webapp2.RequestHandler):
         khan_json_content = khan_data_source.content
         parsed_khan_dictionary = json.loads(khan_json_content)
 
-        for i in
+        # for i in
         video_url= parsed_khan_dictionary['children'][i]['url']
 
         template_params["link"] = video_url
