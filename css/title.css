@@ -72,9 +72,9 @@ a:hover {
     background-image: url("Layer 10.png");
     position: absolute;
     left: 80%;
-    top: 8%;
-    width: 207px;
-    height: 199px;
+    top: 15%;
+    width: 300px;
+    height: 50px;
     z-index: 999px;
   }
 .login{
@@ -125,4 +125,19 @@ a:hover {
   width: 617px;
   height: 111px;
   z-index: 27;
+}
+.bubbles{
+
+  width:150px;
+  height:150px;
+  background: none;
+  opacity: 0.7;
+  transition: 0.5s ease-in-out;
+
+}
+
+.bubbles:hover{
+  opacity: 2;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.5);
 }
