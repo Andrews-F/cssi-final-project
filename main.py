@@ -29,9 +29,11 @@
 import jinja2
 import json
 import os
-import subjecthandler
+# import subjecthandler
 import webapp2
+from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
+
 
 
 jinja_environment = jinja2.Environment(
@@ -80,10 +82,57 @@ class HomeHandler(webapp2.RequestHandler):
 #         template = jinja_environment.get_template('html/subject.html')
 #         self.response.out.write(template.render())
 
+class SubjectHandler(webapp2.RequestHandler):
+    def get(self):
+        # subject = self.request.get("button")
+
+        template_params = {}
+
+        khan_links = []
+        khan_base_url = "http://www.khanacademy.org/api/v1/topic/"
+        topic_slug = self.request.get("search", "algebra")
+        khan_data_source = urlfetch.fetch(khan_base_url + topic_slug)
+        khan_json_content = khan_data_source.content
+        parsed_khan_dictionary = json.loads(khan_json_content)
+        khan_length = len(parsed_khan_dictionary['children'])
+
+        for i in range(khan_length):
+            khan_course_name = parsed_khan_dictionary['children'][i]['title']
+            # self.response.write(khan_course_name)
+            link= parsed_khan_dictionary['children'][i]['url']
+            khan_links.append(link)
+
+
+        # template_params["link"] = video_url
+        # template_params["title"] = topic_slug
+
+
+        coursera_links = []
+        coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
+        search_term = self.request.get("search", "algebra")
+        course_data_source = urlfetch.fetch(coursera_base_url + search_term)
+        course_json_content = course_data_source.content
+        parsed_course_dictionary = json.loads(course_json_content)
+        coursera_length = len(parsed_course_dictionary['elements'])
+
+        for i in range(coursera_length):
+            #coursera_course_name = parsed_course_dictionary['elements'][i]['name']
+            course_short_name = parsed_course_dictionary['elements'][i]['shortName']
+            # self.response.write(course_short_name)
+            link = "https://www.coursera.org/course/" + course_short_name
+            coursera_links.append(link)
+
+
+        self.response.write(coursera_links)
+        self.response.write(khan_links)
+
+        # template = jinja_environment.get_template('html/subject.html')
+        # self.response.out.write(template.render(template_params))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
     ('/home', HomeHandler ),
-    ('/subject', subjecthandler.SubjectHandler)
+    ('/subject', SubjectHandler)        #subjecthandler.SubjectHandler)
 ], debug=True)

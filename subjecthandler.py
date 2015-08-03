@@ -1,9 +1,8 @@
 import jinja2
 import json
 import os
-import homehandler
 import webapp2
-from google.appengine.ext import ndb
+from google.appengine.api import urlfetch
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -12,7 +11,7 @@ jinja_environment = jinja2.Environment(
 
 
 class SubjectHandler(webapp2.RequestHandler):
-    def post(self):
+    def get(self):
         template_params = {}
         url = "http://www.khanacademy.org"
         topic_link = "/api/v1/topic/"
