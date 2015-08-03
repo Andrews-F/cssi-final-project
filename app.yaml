@@ -21,9 +21,9 @@ handlers:
   static_files: indexcover.jpg
   upload: indexcover\.jpg
 
-- url: /title\.html
-  static_files: title.html
-  upload: title\.html
+- url: /../html/title\.html
+  static_files: ../html/title.html
+  upload: ../html/title\.html
 
 - url: .*
   script: main.app
