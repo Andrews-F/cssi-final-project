@@ -38,7 +38,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Hello Word)
+        self.response.write("Hello Word")
 
 
 
