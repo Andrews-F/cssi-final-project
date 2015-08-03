@@ -4,16 +4,31 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
-handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
+
+- url: /letscss\.css
+  static_files: letscss.css
+  upload: letscss\.css
+
+- url: /allscript\.js
+  static_files: allscript.js
+  upload: allscript\.js
+
+- url: /indexcover\.jpg
+  static_files: indexcover.jpg
+  upload: indexcover\.jpg
+
+- url: /title\.html
+  static_files: title.html
+  upload: title\.html
 
 - url: .*
   script: main.app
 
 libraries:
 - name: webapp2
-  version: "2.5.2"
+  version: latest
 - name: jinja2
   version: latest
