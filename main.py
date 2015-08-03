@@ -38,6 +38,8 @@ jinja_environment = jinja2.Environment(
     autoescape=True)
 
 class User(ndb.Model):
+    username = ndb.StringProperty(required=True)
+    password = ndb.StringProperty(required=True)
 
 
 
