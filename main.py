@@ -37,6 +37,9 @@ jinja_environment = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class User(ndb.Model):
+
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
