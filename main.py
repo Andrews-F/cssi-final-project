@@ -23,6 +23,7 @@
 # /usr/local/google_appengine/dev_appserver.py --clear_datastore=1 [path_to_app_name]
 
 #Sofie will see this comment and delete it
+#screw yourself
 
 import os
 import webapp2
@@ -63,7 +64,7 @@ class LoginHandler(webapp2.RequestHandler):
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('home.html')
-        
+
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
