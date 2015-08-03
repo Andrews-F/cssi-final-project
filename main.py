@@ -26,9 +26,11 @@
 #screw yourself
 #love you *heart emoji*
 
-import os
-import webapp2
 import jinja2
+import json
+import os
+import homehandler
+import webapp2
 from google.appengine.ext import ndb
 
 
@@ -50,7 +52,7 @@ class MainHandler(webapp2.RequestHandler):
         template_vars["title"] = "Title"
 
 
-        template = jinja_environment.get_template('title.html')
+        template = jinja_environment.get_template('html/title.html')
         self.response.out.write(template.render(template_vars))
 
 class LoginHandler(webapp2.RequestHandler):
@@ -68,9 +70,6 @@ class LoginHandler(webapp2.RequestHandler):
         #How do we  authenticate a user?
         self.response.out.write(template.render(template_vars))
 
-class HomeHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('home.html')
 
 
 class SubjectHandler(webapp2.RequestHandler):
@@ -81,6 +80,6 @@ class SubjectHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
-    ('/home', HomeHandler ),
+    ('/home', homehandler.HomeHandler ),
     ('/subject', SubjectHandler)
 ], debug=True)
