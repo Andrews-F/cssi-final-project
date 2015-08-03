@@ -9,9 +9,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /letscss\.css
-  static_files: letscss.css
-  upload: letscss\.css
+- url: /../css/home\.css
+  static_files: ../css/home.css
+  upload: ../css/home\.css
 
 - url: /allscript\.js
   static_files: allscript.js
