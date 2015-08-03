@@ -45,7 +45,6 @@ class User(ndb.Model):
     courses = ndb.StringProperty(repeated=True)
 
 
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template_vars ={}
