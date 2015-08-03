@@ -17,9 +17,9 @@ handlers:
   static_files: allscript.js
   upload: allscript\.js
 
-- url: /indexcover\.jpg
-  static_files: indexcover.jpg
-  upload: indexcover\.jpg
+- url: /../photos/indexcover\.jpg
+  static_files: ../photos/indexcover.jpg
+  upload: ../photos/indexcover\.jpg
 
 - url: /../html/title\.html
   static_files: ../html/title.html
