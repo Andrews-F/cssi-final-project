@@ -110,7 +110,7 @@ class SubjectHandler(webapp2.RequestHandler):
         template_vars['coursera_courses'] = {}
         coursera_links = [] #a list of [name, link]
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
-        search_term = template_vars['subject']
+        search_term = template_vars['subject'].replace("-", "+")
         course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&languages=en")
         course_json_content = course_data_source.content
         parsed_course_dictionary = json.loads(course_json_content)
