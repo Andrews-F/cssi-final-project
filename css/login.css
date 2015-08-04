@@ -54,29 +54,6 @@ a:visited {
 a:hover {
   color: blue; text-decoration: none;
 }
-.Welcome {
-  font-size: 100px;
-  font-family: "Helvetica";
-  font-weight: lighter;
-  color: rgb(246, 246, 246);
-  line-height: 1.2;
-  text-align: center;
-  position: absolute;
-  left: 27%;
-  top: 30%;
-  width: 617px;
-  height: 111px;
-  z-index: 27;
-}
-#sunimage1{
-    background-image: url("Layer 10.png");
-    position: absolute;
-    left: 80%;
-    top: 8%;
-    width: 207px;
-    height: 199px;
-    z-index: 999px;
-  }
 .login{
   font-size: 30px;
   font-family: "Helvetica";
@@ -97,20 +74,6 @@ a:hover {
   width: 417px;
   height: 63px;
   z-index: 999px;
-}
-.Begin_Journey {
-  font-size: 30px;
-  font-family: "Helvetica";
-  font-weight: lighter;
-  color: rgb(246, 246, 246);
-  line-height: 1.2;
-  text-align: center;
-  position: absolute;
-  left: 42%;
-  top: 81.5%;
-  z-index: 999;
-  border: none;
-  background-color: none;
 }
 .signup1{
   font-size: 100px;
