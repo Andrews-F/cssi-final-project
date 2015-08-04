@@ -138,7 +138,7 @@ class SubjectHandler(webapp2.RequestHandler):
         itunes_data_source = urlfetch.fetch(itunes_base_url1 + search_term + itunes_base_url2)
         itunes_json_content = itunes_data_source.content
         parsed_itunes_dictionary = json.loads(itunes_json_content)
-        itunes_length = parsed_course_dictionary['resultCount']
+        itunes_length = len(parsed_itunes_dictionary['results'])
 
         for i in range(itunes_length):
             #makes list of [course name, link]
