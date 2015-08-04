@@ -96,6 +96,8 @@ class PersonalHandler(webapp2.RequestHandler):
                 list_users = qry2.fetch()
                 this_user = list_users[0]
                 these_courses = this_user.courses
+                for course in these_courses:
+                    self.response.write(course)
             else:
                 CreateUser(new_user)
             #greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
@@ -201,5 +203,6 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/home', HomeHandler ),
     ('/subject', SubjectHandler),
-    ('/credits', CreditHandler)
+    ('/credits', CreditHandler),
+    ('/personal'), PersonalHandler)
 ], debug=True)
