@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--<link rel="stylesheet" type="text/css" href="../css/subject.css"/>-->
+    <!--Billy here, I added this style sheet^ and it made it really weird.-->
     <title>{{subject}}</title>
   </head>
   <body>
-    {% for course in coursera_courses}
-    
-    {% endfor %}
+    <p>Coursera:</p>
+    <ul>
+      {% for name, link in coursera_courses.items() %}
+        <li><a href={{link}}> {{name}}</a></li>
+      {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <p>Khan Academy:</p>
   </body>
 </html>
