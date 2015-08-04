@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="../css/subject.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/subject.css"/> -->
     <!--Billy here, I added this style sheet^ and it made it really weird.-->
     <title>{{subject}}</title>
   </head>
@@ -15,5 +15,13 @@
     <br>
     <br>
     <p>Khan Academy:</p>
+    <ul>
+      {% for name, link in khan_courses.items() %}
+        <li><a href={{link}}> {{name}}</a></li>
+      {% endfor %}
+    </ul>
+    <br>
+    <br>
+
   </body>
 </html>

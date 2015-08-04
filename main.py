@@ -83,8 +83,9 @@ class SubjectHandler(webapp2.RequestHandler):
         # subject = self.request.get("button")
 
         template_vars = {}
-        template_vars['subject'] = "Algebra" #right now hardcoded. soon will get from button
+        template_vars['subject'] = self.request.get("search", "algebra") #right now hardcoded. soon will get from button
 
+        template_vars['khan_courses'] = {}
         khan_links = []
         khan_base_url = "http://www.khanacademy.org/api/v1/topic/"
         topic_slug = self.request.get("search", "algebra")
@@ -96,11 +97,17 @@ class SubjectHandler(webapp2.RequestHandler):
         for i in range(khan_length):
             khan_course_name = parsed_khan_dictionary['children'][i]['title']
             link= parsed_khan_dictionary['children'][i]['url']
-            khan_links.append(link)
+            khan_links.append([khan_course_name,link])
+
+        for i in range(len(khan_links)):
+            #puts the info [course name, link] into the template_vars to pass to html
+            name = khan_links[i][0]
+            link = khan_links[i][1]
+            course_info = {name: link}
+            template_vars['khan_courses'].update(course_info)
 
 
         template_vars['coursera_courses'] = {}
-
         coursera_links = [] #a list of [name, link]
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
         search_term = self.request.get("search", "algebra")
