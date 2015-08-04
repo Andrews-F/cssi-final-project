@@ -57,15 +57,14 @@ class MainHandler(webapp2.RequestHandler):
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
-        # template = jinja_environment.get_template('html/login.html')
-        # self.response.out.write(template.render())
         user = users.get_current_user()
-        #user_data_source = urlfetch.fetch("https://www.googleapis.com/admin/directory/v1/users/" + user)
         if user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(user.nickname(), users.create_logout_url('/')))
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
         self.response.out.write('%s' % greeting)
+        # template = jinja_environment.get_template('html/login.html')
+        # self.response.out.write(template.render())
 
 
 
