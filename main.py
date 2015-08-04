@@ -53,6 +53,12 @@ def UserExists(some_user):
             return True
     return False
 
+def CreateUser(some_user):
+    courses = []
+    name = UserInfo('our_user'=some_user,'courses'=courses)
+    name.put()
+
+
 class UserInfo(ndb.Model):
     our_user = ndb.UserProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
@@ -71,10 +77,7 @@ class LoginHandler(webapp2.RequestHandler):
         new_user = users.get_current_user()
 
         if !UserExists(new_user):
-            course = []
-            name = UserInfo('our_user'=new_user,'courses'=courses)
-            name.put()
-
+            CreateUser(new_user)
         if new_user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
         else:
@@ -86,9 +89,10 @@ class LoginHandler(webapp2.RequestHandler):
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
-        qry1 = UserInfo.query()
-        all_users = qry1.fetch()
         if new_user:
+            if UserExists(new_user):
+                qry1 = UserInfo.query()
+                all_users = qry1.fetch()
             #greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
 
         else:
