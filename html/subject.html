@@ -68,5 +68,13 @@
     </ul>
     <br>
     <br>
+
+    <h3>iTunes U:</h3>
+    <ul id="ituneslinks">
+      {% for name, link in itunes_courses.items() %}
+        <li><a href={{link}}> {{name}}</a></li>
+      {% endfor %}
+    </ul>
+
   </body>
 </html>

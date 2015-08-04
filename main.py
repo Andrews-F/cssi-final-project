@@ -150,7 +150,7 @@ class SubjectHandler(webapp2.RequestHandler):
             #puts the info [course name, link] into the template_vars to pass to html
             name = itunes_links[i][0]
             link = itunes_links[i][1]
-            itunes_info = {names: link}
+            itunes_info = {name: link}
             template_vars['itunes_courses'].update(itunes_info)
 
 
