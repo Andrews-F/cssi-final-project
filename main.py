@@ -59,17 +59,19 @@ class MainHandler(webapp2.RequestHandler):
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('html/login.html')
+        self.response.out.write(template.render())
 
-    def post(self):
-        template = jinja_environment.get_template('html/login.html')
-        username = self.request.get('username')
-        password = self.request.get('password')
-        new_username = self.request.get('new_username')
-        new_password = self.request.get('new_password')
-        new_email = self.request.get('new_email')
-        #Questions:
-        #How do we  authenticate a user?
-        self.response.out.write(template.render(template_vars))
+
+    # def post(self):
+    #     template = jinja_environment.get_template('html/login.html')
+    #     username = self.request.get('username')
+    #     password = self.request.get('password')
+    #     new_username = self.request.get('new_username')
+    #     new_password = self.request.get('new_password')
+    #     new_email = self.request.get('new_email')
+    #     #Questions:
+    #     #How do we  authenticate a user?
+    #     self.response.out.write(template.render(template_vars))
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
