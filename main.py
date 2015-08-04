@@ -78,14 +78,12 @@ class HomeHandler(webapp2.RequestHandler):
         self.response.out.write(template.render())
 
 
-# class SubjectHandler(webapp2.RequestHandler):
-#     def get(self):
-#         template = jinja_environment.get_template('html/subject.html')
-#         self.response.out.write(template.render())
-
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
         # subject = self.request.get("button")
+
+        template_vars = {}
+        template_vars['subject'] = "Algebra" #right now hardcoded. soon will get from button
 
         khan_links = []
         khan_base_url = "http://www.khanacademy.org/api/v1/topic/"
@@ -97,19 +95,16 @@ class SubjectHandler(webapp2.RequestHandler):
 
         for i in range(khan_length):
             khan_course_name = parsed_khan_dictionary['children'][i]['title']
-            # self.response.write(khan_course_name)
             link= parsed_khan_dictionary['children'][i]['url']
             khan_links.append(link)
 
 
-        template_vars = {}
-        template_vars['subject'] = "Algebra"
         template_vars['coursera_courses'] = {}
 
-        coursera_links = []
+        coursera_links = [] #a list of [name, link]
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
         search_term = self.request.get("search", "algebra")
-        course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&language=en")
+        course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&languages=en")
         course_json_content = course_data_source.content
         parsed_course_dictionary = json.loads(course_json_content)
         coursera_length = len(parsed_course_dictionary['elements'])
