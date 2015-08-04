@@ -51,7 +51,8 @@
         </li>
       </ul>
     </div>
-    <h1>{{subject.replace("-", " ").title()}}</h1>
+    <img id="subjectmainbackground" src="../photos/compscibackground.jpg"/>
+    <h1 id="subjecttitle">{{subject.replace("-", " ").title()}}</h1>
     <h3>Coursera:</h3>
     <ul id="courseralinks">
       {% for name, link in coursera_courses.items() %}
@@ -68,13 +69,11 @@
     </ul>
     <br>
     <br>
-
     <h3>iTunes U:</h3>
     <ul id="ituneslinks">
       {% for name, link in itunes_courses.items() %}
         <li><a href={{link}}> {{name}}</a></li>
       {% endfor %}
     </ul>
-
   </body>
 </html>
