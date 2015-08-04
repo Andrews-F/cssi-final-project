@@ -3,6 +3,10 @@ html {
   background: url(../photos/indexcover.jpg) no-repeat center center;
   background-size: cover;
 }
+html {
+       /* Size of largest container or bigger */
+       min-width: 1080px;
+   }
 h3{
   background-color: background: #CCC;
   opacity:0.7; color: black; position: relative;
@@ -67,6 +71,7 @@ a:hover {
   width: 617px;
   height: 111px;
   z-index: 27;
+  padding: auto;
 }
 #sunimage1{
     background-image: url("Layer 10.png");
