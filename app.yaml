@@ -20,27 +20,6 @@ handlers:
 - url: /javascript
   static_dir: javascript
 
-
-# - url: /../css/*\.css
-#   static_files: ../css/*.css
-#   upload: ../css/*\.css
-#
-# - url: /allscript\.js
-#   static_files: allscript.js
-#   upload: allscript\.js
-#
-# - url: /../photos/indexcover\.jpg
-#   static_files: ../photos/indexcover.jpg
-#   upload: ../photos/indexcover\.jpg
-#
-# - url: /../html/title\.html
-#   static_files: ../html/title.html
-#   upload: ../html/title\.html
-#
-# - url: /.*
-#   static_dir: css
-#   script: main.app
-
 - url: .*
   script: main.app
 
