@@ -55,7 +55,7 @@ def UserExists(some_user):
 
 def CreateUser(some_user):
     courses = []
-    name = UserInfo('our_user'=some_user,'courses'=courses)
+    name = UserInfo(our_user=some_user,courses=courses)
     name.put()
 
 
