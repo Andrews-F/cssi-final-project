@@ -45,6 +45,9 @@ jinja_environment = jinja2.Environment(
     autoescape=True)
 
 
+class UserInfo(ndb.Model):
+    our_user = ndb.UserProperty(required=True)
+    courses = ndb.StringProperty(repeated=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -57,7 +60,20 @@ class MainHandler(webapp2.RequestHandler):
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
+        new_user = users.get_current_user()
+        qry1 = UserInfo.query()
+        all_users = qry1.fetch()
+
+        found = False
+        for individual in all_users:
+            if individual.our_user.user_id() == new_user.user_id():
+                found = True
+                break
+
+        if not found:
+            return None
+            #add new user to database
+
         if user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(user.nickname(), users.create_logout_url('/')))
         else:
@@ -65,6 +81,10 @@ class LoginHandler(webapp2.RequestHandler):
         self.response.out.write('%s' % greeting)
         # template = jinja_environment.get_template('html/login.html')
         # self.response.out.write(template.render())
+
+class PersonalHandler(webapp2.RequestHandler):
+    def get(self):
+        return None
 
 
 
