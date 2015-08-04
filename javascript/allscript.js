@@ -42,18 +42,14 @@ $(function() {
     //     $("body").fadeOut(1000, redirectPage);
     // });
 
-
     // $(function(){
     //   function fade() {
     //     $("#MainIsmsageB1").fadeOut(6000);
     //   }
     //     $("#MainImsageB1").hover(fade);
 
-
-
-
 });
 
-function redirectPage() {
-    window.location = linkLocation;
-}
+// function redirectPage() {
+//     window.location = linkLocation;
+// }
