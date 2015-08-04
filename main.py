@@ -190,10 +190,15 @@ class SubjectHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('html/subject.html')
         self.response.out.write(template.render(template_vars))
 
+class CreditHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('html/credits.html')
+        self.response.out.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
     ('/home', HomeHandler ),
     ('/subject', SubjectHandler)
+    ('/credits', CreditHandler)
 ], debug=True)
