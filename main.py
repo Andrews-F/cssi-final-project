@@ -29,7 +29,6 @@
 import jinja2
 import json
 import os
-# import subjecthandler
 import webapp2
 from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
