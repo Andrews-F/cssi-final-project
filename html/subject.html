@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>{{subject.capitalize()}}</h1>
-    <p>Coursera:</p>
+    <h3>Coursera:</h3>
     <ul>
       {% for name, link in coursera_courses.items() %}
         <li><a href={{link}}> {{name}}</a></li>
@@ -15,7 +15,7 @@
     </ul>
     <br>
     <br>
-    <p>Khan Academy:</p>
+    <h3>Khan Academy:</h3>
     <ul>
       {% for name, link in khan_courses.items() %}
         <li><a href={{link}}> {{name}}</a></li>
