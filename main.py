@@ -110,7 +110,7 @@ class SubjectHandler(webapp2.RequestHandler):
         coursera_links = []
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
         search_term = self.request.get("search", "algebra")
-        course_data_source = urlfetch.fetch(coursera_base_url + search_term)
+        course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&language=en")
         course_json_content = course_data_source.content
         parsed_course_dictionary = json.loads(course_json_content)
         coursera_length = len(parsed_course_dictionary['elements'])
@@ -137,5 +137,5 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
     ('/home', HomeHandler ),
-    ('/subject', SubjectHandler)        #subjecthandler.SubjectHandler)
+    ('/subject', SubjectHandler)
 ], debug=True)
