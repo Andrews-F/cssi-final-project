@@ -84,7 +84,7 @@ class LoginHandler(webapp2.RequestHandler):
 
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
-
+        return None
 
 
 
