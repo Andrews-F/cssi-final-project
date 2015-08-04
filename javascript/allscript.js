@@ -19,3 +19,10 @@ $(function(){
   }
     $("#MainImsageB1").hover(fade);
 });
+$("#hide").click(function(){
+    $("p").hide();
+});
+
+$("#show").click(function(){
+    $("p").show();
+});
