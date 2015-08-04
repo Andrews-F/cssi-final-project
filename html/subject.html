@@ -52,7 +52,7 @@
       </ul>
     </div>
     <div id="pagelinks">
-    <h1>{{subject.capitalize()}}</h1>
+    <h1>{{subject.replace("-", " ").title()}}</h1>
     <h3>Coursera:</h3>
     <ul>
       {% for name, link in coursera_courses.items() %}
