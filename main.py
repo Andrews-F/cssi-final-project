@@ -26,6 +26,9 @@
 #screw yourself
 #love you *heart emoji*
 
+#Uploading to app engine
+# in terminal:  appcfg.py --oauth2 -A cssi-final-project-2015 update .
+
 import jinja2
 import json
 import os
