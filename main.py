@@ -30,8 +30,9 @@ import jinja2
 import json
 import os
 import webapp2
-from google.appengine.api import urlfetch
+from google.appengine.api import users, urlfetch
 from google.appengine.ext import ndb
+
 
 
 
@@ -39,11 +40,6 @@ jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
-class User(ndb.Model):
-    username = ndb.StringProperty(required=True)
-    password = ndb.StringProperty(required=True)
-    courses = ndb.StringProperty(repeated=True)
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -57,20 +53,16 @@ class MainHandler(webapp2.RequestHandler):
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('html/login.html')
-        self.response.out.write(template.render())
+        # template = jinja_environment.get_template('html/login.html')
+        # self.response.out.write(template.render())
+        user = users.get_current_user()
+        #user_data_source = urlfetch.fetch("https://www.googleapis.com/admin/directory/v1/users/" + user)
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(user.nickname(), users.create_logout_url('/')))
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
+        self.response.out.write('%s' % greeting)
 
-
-    # def post(self):
-    #     template = jinja_environment.get_template('html/login.html')
-    #     username = self.request.get('username')
-    #     password = self.request.get('password')
-    #     new_username = self.request.get('new_username')
-    #     new_password = self.request.get('new_password')
-    #     new_email = self.request.get('new_email')
-    #     #Questions:
-    #     #How do we  authenticate a user?
-    #     self.response.out.write(template.render(template_vars))
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
