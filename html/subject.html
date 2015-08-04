@@ -16,5 +16,12 @@
     <br>
     <br>
     <p>Khan Academy:</p>
+    <ul>
+      {% for name, link in khan_courses.items() %}
+        <li><a href={{link}}> {{name}}</a></li>
+      {% endfor %}
+    </ul>
+    <br>
+    <br>
   </body>
 </html>
