@@ -68,7 +68,6 @@ class MainHandler(webapp2.RequestHandler):
         template_vars ={}
         template_vars["title"] = "Title"
 
-
         template = jinja_environment.get_template('html/title.html')
         self.response.out.write(template.render(template_vars))
 
@@ -78,6 +77,7 @@ class LoginHandler(webapp2.RequestHandler):
 
         if not UserExists(new_user):
             CreateUser(new_user)
+
         if new_user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
         else:
@@ -91,8 +91,12 @@ class PersonalHandler(webapp2.RequestHandler):
         new_user = users.get_current_user()
         if new_user:
             if UserExists(new_user):
-                qry1 = UserInfo.query()
-                all_users = qry1.fetch()
+                qry1 = UserInfo.query(UserInfo.our_user = new_user)
+                list_users = qry1.fetch()
+                this_user = list_users[0]
+                these_courses = this_user.courses
+            else:
+                CreateUser(new_user)
             #greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
 
         else:
