@@ -130,6 +130,31 @@ class SubjectHandler(webapp2.RequestHandler):
             course_info = {name: link}
             template_vars['coursera_courses'].update(course_info)
 
+
+        template_vars['itunes_courses'] = {}
+        itunes_links = []
+        itunes_base_url1 = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term="
+        itunes_base_url2 = "&media=iTunesU&entity=podcast"
+        itunes_data_source = urlfetch.fetch(itunes_base_url1 + search_term + itunes_base_url2)
+        itunes_json_content = itunes_data_source.content
+        parsed_itunes_dictionary = json.loads(itunes_json_content)
+        itunes_length = parsed_course_dictionary['resultCount']
+
+        for i in range(itunes_length):
+            #makes list of [course name, link]
+            itunes_course_name = parsed_itunes_dictionary['results'][i]["collectionName"]
+            link = parsed_itunes_dictionary['results'][i]["collectionViewUrl"]
+            itunes_links.append([itunes_course_name, link])
+
+        for i in range(len(itunes_links)):
+            #puts the info [course name, link] into the template_vars to pass to html
+            name = itunes_links[i][0]
+            link = itunes_links[i][1]
+            itunes_info = {names: link}
+            template_vars['itunes_courses'].update(itunes_info)
+
+
+
         template = jinja_environment.get_template('html/subject.html')
         self.response.out.write(template.render(template_vars))
 
