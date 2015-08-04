@@ -53,7 +53,7 @@
     </div>
     <h1>{{subject.replace("-", " ").title()}}</h1>
     <h3>Coursera:</h3>
-    <ul>
+    <ul id="courseralinks">
       {% for name, link in coursera_courses.items() %}
         <li><a href={{link}}> {{name}}</a></li>
       {% endfor %}
@@ -61,7 +61,7 @@
     <br>
     <br>
     <h3>Khan Academy:</h3>
-    <ul>
+    <ul id="khanlinks">
       {% for name, link in khan_courses.items() %}
         <li><a href={{link}}> {{name}}</a></li>
       {% endfor %}

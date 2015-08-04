@@ -5,7 +5,9 @@ html {
 }
 h3{
   background-color: background: #CCC;
-  opacity:0.7; color: black; position: relative;
+  opacity:0.9; color: black; position: relative;
+  font-family: "helvetica";
+  font-weight:lighter;
 }
 .top {
   background-color: background: #CCC;
