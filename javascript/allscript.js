@@ -19,10 +19,8 @@ $(function(){
   }
     $("#MainImsageB1").hover(fade);
 });
-$("#hide").click(function(){
-    $("p").hide();
-});
+$(document).ready(function(){
 
-$("#show").click(function(){
-    $("p").show();
-});
+  $("#Math").click(function () {
+    $(".bubbles").replaceWith( " <img src='http://www.ypc.org/news/images/20142015/golden-gate-festival_chorale.jpg'> " )
+   });
