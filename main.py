@@ -44,7 +44,14 @@ jinja_environment = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-
+def UserExists(some_user):
+    #does user exist in our database?
+    qry1 = UserInfo.query() #Coulve filtered
+    all_users = qry1.fetch()
+    for individual in all_users:
+        if individual.our_user.user_id() == some_user.user_id():
+            return True
+    return False
 
 class UserInfo(ndb.Model):
     our_user = ndb.UserProperty(required=True)
@@ -62,16 +69,8 @@ class MainHandler(webapp2.RequestHandler):
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
-        qry1 = UserInfo.query() #Coulve filtered
-        all_users = qry1.fetch()
 
-        found = False
-        for individual in all_users:
-            if individual.our_user.user_id() == new_user.user_id():
-                found = True
-                break
-
-        if not found:
+        if !UserExists(new_user):
             course = []
             name = UserInfo('our_user'=new_user,'courses'=courses)
             name.put()
