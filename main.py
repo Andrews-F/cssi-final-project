@@ -71,6 +71,7 @@ class LoginHandler(webapp2.RequestHandler):
                 break
 
         if not found:
+            return None
             #add new user to database
 
         if user:
