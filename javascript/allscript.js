@@ -1,22 +1,41 @@
-$(document).ready(function() {
+$(function() {
 
+    $("#Math").click(function () {
+      $(".subj").css("display", "none")
 
-    $(".mathbubbles").hide();
-    $(".sciencebubbles").hide();
-    $(".historybubbles").hide();
-    $(".csbubbles").hide();
+      $(".mathbubbles")
+          .css("display", "block")
+          .animate({ opacity: 1 }, 500)
+     });
 
+     $("#Science").click(function () {
+       $(".subj").css("display", "none")
 
-    // $("#Math").click(function () {
-    //   $("#algebracircle").fadeIn( 2000 )
-    //   $("#geometrycircle").fadeIn( 2000 )
-    //   $("#trigcircle").fadeIn( 2000 )
-    //  });
+       $(".sciencebubbles")
+           .css("display", "block")
+           .animate({ opacity: 1 }, 500)
+      });
 
-    // $("body").css("display", "none");
-    //
-    // $("body").fadeIn(2000);
-    //
+      $("#History").click(function () {
+        $(".subj").css("display", "none")
+
+        $(".historybubbles")
+            .css("display", "block")
+            .animate({ opacity: 1 }, 500)
+       });
+
+       $("#Comp").click(function () {
+         $(".subj").css("display", "none")
+
+         $(".csbubbles")
+             .css("display", "block")
+             .animate({ opacity: 1 }, 500)
+        });
+
+    $("body")
+        .css("opacity", 0)
+        .animate({ opacity: 1 }, 1000);
+
     // $("a.transition").click(function(event){
     //     event.preventDefault();
     //     linkLocation = this.href;
@@ -35,6 +54,6 @@ $(document).ready(function() {
 
 });
 
-// function redirectPage() {
-//     window.location = linkLocation;
-// }
+function redirectPage() {
+    window.location = linkLocation;
+}

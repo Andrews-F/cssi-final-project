@@ -296,3 +296,10 @@ a:hover {
 body{
   max-width: 1000px;
 }
+.mathbubbles,
+.sciencebubbles,
+.historybubbles,
+.csbubbles {
+  display: none;
+  opacity: 0;
+}
