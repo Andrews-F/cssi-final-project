@@ -76,7 +76,7 @@ class LoginHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
 
-        if !UserExists(new_user):
+        if not UserExists(new_user):
             CreateUser(new_user)
         if new_user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
