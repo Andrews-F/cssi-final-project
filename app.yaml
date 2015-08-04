@@ -20,9 +20,6 @@ handlers:
 - url: /photos
   static_dir: photos
 
-- url: /javascript
-  static_dir: javascript
-
 - url: .*
   script: main.app
 
