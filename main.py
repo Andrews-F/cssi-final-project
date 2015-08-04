@@ -116,13 +116,14 @@ class SubjectHandler(webapp2.RequestHandler):
         coursera_length = len(parsed_course_dictionary['elements'])
 
         for i in range(coursera_length):
+            #makes list of [course name, link]
             coursera_course_name = parsed_course_dictionary['elements'][i]['name']
             course_short_name = parsed_course_dictionary['elements'][i]['shortName']
-            # self.response.write(course_short_name)
             link = "https://www.coursera.org/course/" + course_short_name
             coursera_links.append([coursera_course_name, link])
 
         for i in range(len(coursera_links)):
+            #puts the info [course name, link] into the template_vars to pass to html
             name = coursera_links[i][0]
             link = coursera_links[i][1]
             course_info = {name: link}
