@@ -1,35 +1,35 @@
 $(function() {
 
     $("#Math").click(function () {
-      $(".subj").css("display", "none")
+      $(".subj").animate({ opacity: 0 }, 250);
 
       $(".mathbubbles")
           .css("display", "block")
-          .animate({ opacity: 1 }, 500)
+          .animate({ opacity: 1 }, 500);
      });
 
      $("#Science").click(function () {
-       $(".subj").css("display", "none")
+       $(".subj").animate({ opacity: 0 }, 250);
 
        $(".sciencebubbles")
            .css("display", "block")
-           .animate({ opacity: 1 }, 500)
+           .animate({ opacity: 1 }, 500);
       });
 
       $("#History").click(function () {
-        $(".subj").css("display", "none")
+        $(".subj").animate({ opacity: 0 }, 250);
 
         $(".historybubbles")
             .css("display", "block")
-            .animate({ opacity: 1 }, 500)
+            .animate({ opacity: 1 }, 500);
        });
 
        $("#Comp").click(function () {
-         $(".subj").css("display", "none")
+         $(".subj").animate({ opacity: 0 }, 250);
 
          $(".csbubbles")
              .css("display", "block")
-             .animate({ opacity: 1 }, 500)
+             .animate({ opacity: 1 }, 500);
         });
 
     $("body")
