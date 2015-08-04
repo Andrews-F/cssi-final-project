@@ -1,6 +1,6 @@
 html {
-  height: 100%;
-  background: url(indexcover.jpg) no-repeat center center;
+  height: 200%;
+  background: url(../photos/subjectbackground2.jpg) no-repeat center center;
   background-size: cover;
 }
 h3{
@@ -9,11 +9,11 @@ h3{
 }
 .top {
   background-color: background: #CCC;
-  opacity: .2;
+  opacity: .7;
   background-color: white;
   position: fixed;
   margin-left: -.6%;
-  z-index: 9999px;
+  z-index: 99999;
   margin-top: -.6%;
 }
 #logoimage {
@@ -125,4 +125,12 @@ a:hover {
   width: 617px;
   height: 111px;
   z-index: 27;
+}
+h1{
+  color: black;
+  font-family: "Helvetica";
+  font-weight: lighter;
+  padding-top: 7%;
+  position: relative;
+  z-index: -999;
 }
