@@ -4,8 +4,10 @@
     <title>{{subject}}</title>
   </head>
   <body>
-    {% for course in coursera_courses}
-    
-    {% endfor %}
+    <ul>
+      {% for name, link in coursera_courses.items() %}
+        <li><a href={{link}}> {{name}}</a></li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

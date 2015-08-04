@@ -88,8 +88,6 @@ class SubjectHandler(webapp2.RequestHandler):
     def get(self):
         # subject = self.request.get("button")
 
-        template_params = {}
-
         khan_links = []
         khan_base_url = "http://www.khanacademy.org/api/v1/topic/"
         topic_slug = self.request.get("search", "algebra")
@@ -105,9 +103,9 @@ class SubjectHandler(webapp2.RequestHandler):
             khan_links.append(link)
 
 
-        # template_params["link"] = video_url
-        # template_params["title"] = topic_slug
-
+        template_vars = {}
+        template_vars['subject'] = "Algebra"
+        template_vars['coursera_courses'] = {}
 
         coursera_links = []
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
@@ -118,18 +116,20 @@ class SubjectHandler(webapp2.RequestHandler):
         coursera_length = len(parsed_course_dictionary['elements'])
 
         for i in range(coursera_length):
-            #coursera_course_name = parsed_course_dictionary['elements'][i]['name']
+            coursera_course_name = parsed_course_dictionary['elements'][i]['name']
             course_short_name = parsed_course_dictionary['elements'][i]['shortName']
             # self.response.write(course_short_name)
             link = "https://www.coursera.org/course/" + course_short_name
-            coursera_links.append(link)
+            coursera_links.append([coursera_course_name, link])
 
+        for i in range(len(coursera_links)):
+            name = coursera_links[i][0]
+            link = coursera_links[i][1]
+            course_info = {name: link}
+            template_vars['coursera_courses'].update(course_info)
 
-        self.response.write(coursera_links)
-        self.response.write(khan_links)
-
-        # template = jinja_environment.get_template('html/subject.html')
-        # self.response.out.write(template.render(template_params))
+        template = jinja_environment.get_template('html/subject.html')
+        self.response.out.write(template.render(template_vars))
 
 
 app = webapp2.WSGIApplication([
