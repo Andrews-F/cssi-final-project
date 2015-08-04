@@ -293,3 +293,7 @@ body{
 #Comp > div, #History > div {
   margin-top: 10px;
 }
+
+#Math, #Science, #Comp, #History {
+  cursor: pointer;
+}
