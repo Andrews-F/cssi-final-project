@@ -97,7 +97,6 @@ class SubjectHandler(webapp2.RequestHandler):
 
         for i in range(khan_length):
             khan_course_name = parsed_khan_dictionary['children'][i]['title']
-            # self.response.write(khan_course_name)
             link= parsed_khan_dictionary['children'][i]['url']
             khan_links.append(link)
 
@@ -106,10 +105,10 @@ class SubjectHandler(webapp2.RequestHandler):
         template_vars['subject'] = "Algebra"
         template_vars['coursera_courses'] = {}
 
-        coursera_links = []
+        coursera_links = [] #a list of [name, link]
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
         search_term = self.request.get("search", "algebra")
-        course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&language=en")
+        course_data_source = urlfetch.fetch(coursera_base_url + search_term + "&languages=en")
         course_json_content = course_data_source.content
         parsed_course_dictionary = json.loads(course_json_content)
         coursera_length = len(parsed_course_dictionary['elements'])
