@@ -45,6 +45,7 @@ jinja_environment = jinja2.Environment(
     autoescape=True)
 
 
+
 class UserInfo(ndb.Model):
     our_user = ndb.UserProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
@@ -61,7 +62,7 @@ class MainHandler(webapp2.RequestHandler):
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
-        qry1 = UserInfo.query()
+        qry1 = UserInfo.query() #Coulve filtered
         all_users = qry1.fetch()
 
         found = False
@@ -71,11 +72,12 @@ class LoginHandler(webapp2.RequestHandler):
                 break
 
         if not found:
-            return None
-            #add new user to database
+            course = []
+            name = UserInfo('our_user'=new_user,'courses'=courses)
+            name.put()
 
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(user.nickname(), users.create_logout_url('/')))
+        if new_user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
         self.response.out.write('%s' % greeting)
@@ -84,7 +86,14 @@ class LoginHandler(webapp2.RequestHandler):
 
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
-        return None
+        new_user = users.get_current_user()
+        qry1 = UserInfo.query()
+        all_users = qry1.fetch()
+        if new_user:
+            #greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
+
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
 
 
 
