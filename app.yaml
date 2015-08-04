@@ -6,13 +6,16 @@ threadsafe: yes
 
 handlers:
 
-  
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
 - url: /css
   static_dir: css
+
+- url: /javascript
+  static_dir: javascript
 
 - url: /photos
   static_dir: photos
