@@ -91,8 +91,9 @@ class PersonalHandler(webapp2.RequestHandler):
         new_user = users.get_current_user()
         if new_user:
             if UserExists(new_user):
-                qry1 = UserInfo.query(UserInfo.our_user.user_id() = new_user.user_id())
-                list_users = qry1.fetch()
+                qry1 = UserInfo.query()
+                qry2 = qry1.filter(UserInfo.our_user == new_user)
+                list_users = qry2.fetch()
                 this_user = list_users[0]
                 these_courses = this_user.courses
             else:
