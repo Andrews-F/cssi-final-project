@@ -209,6 +209,12 @@ class SubjectHandler(webapp2.RequestHandler):
             itunes_info = {name: link}
             template_vars['itunes_courses'].update(itunes_info)
 
+        courses = []
+        courses = self.request.get('courses')
+        # for i range(len(courses)):
+        #     courses.append(courses[i])
+        template_vars('courses')= courses
+
         template = jinja_environment.get_template('html/subject.html')
         self.response.out.write(template.render(template_vars))
 
