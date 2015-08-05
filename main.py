@@ -69,6 +69,19 @@ def GetCourseList(some_user):
     courses = this_user.courses
     return courses
 
+def GetUserInfo(some_email):
+    #returns a userinfo object (someone saved in out database) with a specific email
+    user_query = UserInfo.query()
+    filtered_query = user_query.filter(UserInfo.our_user_email == some_email)
+    list_user = filtered_query.fetch()
+    this_user = list_user[0]
+    return this_user
+
+def UpdateCourses(some_email, new_course):
+    #adds a course to list of courses of a specific user
+    current_user = GetUserInfo(some_email)
+    list_of_courses = current_user.courses
+    list_of_courses.append(new_course)
 
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
@@ -118,6 +131,7 @@ class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         if current_user:
+            print "IF CP"
             nickname = current_user.nickname()
             if not UserExists(current_user):
                 CreateUser(current_user)
@@ -128,17 +142,27 @@ class PersonalHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_vars))
 
         else:
+            #print "ELSE Checkpoint"
             #greeting = ('<a href="%s">Sign in</a>.'%users.create_login_url('/'))
-            login = users.create_login_url('/')
-            template_vars = {'loginurl': login}
-            template = jinja_environment.get_template('html/newlogin.html')
-            self.response.out.write(template.render(template_vars))
+            # login = users.create_login_url('/')
+            # template_vars = {'loginurl': login}
+            # template = jinja_environment.get_template('html/newlogin.html')
+            # self.response.out.write(template.render(template_vars))
+            self.redirect('/login')
 
     def post(self):
         chosen_course = self.request.get("chosen_course")
         new_course_list = chosen_course.split("||")
-        print new_course_list
-        self.redirect('/personal')
+        #returns [name, link]
+        current_user = users.get_current_user()
+        if current_user:
+            if UserExists(current_user):
+                current_email = current_user.email()
+                UpdateCourses(current_email, new_course_list)
+            else:
+                self.redirect('/personal')
+        else:
+            self.redirect('/personal')
 
 
 class SubjectHandler(webapp2.RequestHandler):
