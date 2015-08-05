@@ -136,11 +136,11 @@ class PersonalHandler(webapp2.RequestHandler):
             template = jinja_environment.get_template('html/newlogin.html')
             self.response.out.write(template.render(template_vars))
 
-        def post(self):
-            chosen_course = self.request.get("chosen_course")
-            new_course_list = chosen_course.split("||")
-            print new_course_list
-            self.redirect('/personal')
+    def post(self):
+        chosen_course = self.request.get("chosen_course")
+        new_course_list = chosen_course.split("||")
+        print new_course_list
+        self.redirect('/personal')
 
 
 
@@ -237,7 +237,7 @@ class CreditHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
-    ('/home', HomeHandler ),
+    ('/home', HomeHandler),
     ('/subject', SubjectHandler),
     ('/credits', CreditHandler),
     ('/personal', PersonalHandler)
