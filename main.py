@@ -68,14 +68,24 @@ def GetCourseList(some_user):
     courses = this_user.courses
     return courses
 
+
+
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('html/title.html')
         self.response.out.write(template.render())
+
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('html/home.html')
+        self.response.out.write(template.render())
+
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
@@ -102,6 +112,7 @@ class LoginHandler(webapp2.RequestHandler):
         template_vars = {'home_or_personal': link1, 'h_or_p': tag1, 'login_or_out': link2, 'in_out_tag': tag2, 'greeting': greeting}
         self.response.out.write(template.render(template_vars))
 
+
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
@@ -123,16 +134,8 @@ class PersonalHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_vars))
 
 
-class HomeHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('html/home.html')
-        self.response.out.write(template.render())
-
-
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
-        # subject = self.request.get("button")
-
         template_vars = {}
         template_vars['subject'] = self.request.get("search", "algebra")
 
@@ -204,10 +207,9 @@ class SubjectHandler(webapp2.RequestHandler):
             itunes_info = {name: link}
             template_vars['itunes_courses'].update(itunes_info)
 
-
-
         template = jinja_environment.get_template('html/subject.html')
         self.response.out.write(template.render(template_vars))
+
 
 class CreditHandler(webapp2.RequestHandler):
     def get(self):
