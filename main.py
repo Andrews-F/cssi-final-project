@@ -54,8 +54,8 @@ def UserExists(some_user):
 def CreateUser(some_user):
     #put new user into our database
     some_email = some_user.email()
-    courses = []
-    #courses = [["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]] #temporarily hardcoded
+    #courses = []
+    courses = ["Calculus||#", "Physics||#", "Computer Science||#"] #temporarily hardcoded
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
@@ -80,8 +80,13 @@ def GetUserInfo(some_email):
 def UpdateCourses(some_email, new_course):
     #adds a course to list of courses of a specific user
     current_user = GetUserInfo(some_email)
+    print "Got user info"
     list_of_courses = current_user.courses
+    print "created list of courses: {}".format(list_of_courses)
+    print new_course
     list_of_courses.append(new_course)
+    print "extended new course {}".format(current_user.courses)
+    current_user.put()
 
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
@@ -131,7 +136,6 @@ class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         if current_user:
-            print "IF CP"
             nickname = current_user.nickname()
             if not UserExists(current_user):
                 CreateUser(current_user)
@@ -152,17 +156,21 @@ class PersonalHandler(webapp2.RequestHandler):
 
     def post(self):
         chosen_course = self.request.get("chosen_course")
-        new_course_list = chosen_course.split("||")
+        print chosen_course
+        # new_course_list = chosen_course.split("||")
         #returns [name, link]
         current_user = users.get_current_user()
         if current_user:
             if UserExists(current_user):
+                print "current user exists"
                 current_email = current_user.email()
-                UpdateCourses(current_email, new_course_list)
+                UpdateCourses(current_email, chosen_course)
             else:
-                self.redirect('/personal')
-        else:
+                print "current user does not exits"
             self.redirect('/personal')
+        else:
+            print "there is no current user"
+            self.redirect('/login')
 
 
 class SubjectHandler(webapp2.RequestHandler):
