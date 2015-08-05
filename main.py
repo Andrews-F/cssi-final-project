@@ -104,8 +104,7 @@ class PersonalHandler(webapp2.RequestHandler):
             course_list = GetCourseList(current_user)
             template_vars = {'nickname': nickname, 'courses': course_list}
             template = jinja_environment.get_template('html/mypage.html')
-            #self.response.out.write(template.render())
-            self.response.out.write(template_vars)
+            self.response.out.write(template.render(template_vars))
 
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
