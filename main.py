@@ -70,7 +70,6 @@ def GetCourseList(some_user):
     return courses
 
 
-
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
@@ -97,7 +96,6 @@ class LoginHandler(webapp2.RequestHandler):
                 CreateUser(new_user)
             else:
                 greeting = "Welcome back {}!".format(new_user.nickname())
-            # link 3 =browse courses
             logout = users.create_logout_url('/')
             link1 = "/personal"
             tag1 = "Go to your personal page"
@@ -143,8 +141,6 @@ class PersonalHandler(webapp2.RequestHandler):
         self.redirect('/personal')
 
 
-
-
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
         template_vars = {}
@@ -171,7 +167,6 @@ class SubjectHandler(webapp2.RequestHandler):
             course_info = {name: link}
             template_vars['khan_courses'].update(course_info)
 
-
         template_vars['coursera_courses'] = {}
         coursera_links = [] #a list of [name, link]
         coursera_base_url = "https://api.coursera.org/api/catalog.v1/courses?q=search&query="
@@ -195,7 +190,6 @@ class SubjectHandler(webapp2.RequestHandler):
             course_info = {name: link}
             template_vars['coursera_courses'].update(course_info)
 
-
         template_vars['itunes_courses'] = {}
         itunes_links = []
         itunes_base_url1 = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term="
@@ -217,12 +211,6 @@ class SubjectHandler(webapp2.RequestHandler):
             link = itunes_links[i][1]
             itunes_info = {name: link}
             template_vars['itunes_courses'].update(itunes_info)
-
-        # courses = []
-        # courses = self.request.get('courses')
-        # # for i range(len(courses)):
-        # #     courses.append(courses[i])
-        # template_vars['courses'] = courses
 
         template = jinja_environment.get_template('html/subject.html')
         #add courses to the user signed in
