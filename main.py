@@ -137,7 +137,12 @@ class PersonalHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_vars))
 
     def post(self):
-        
+        chosen_course = self.request.get("chosen_course")
+        new_course_list = chosen_course.split("||")
+        print new_course_list
+        self.redirect('/personal')
+
+
 
 
 class SubjectHandler(webapp2.RequestHandler):
