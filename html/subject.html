@@ -56,7 +56,7 @@
       <h3>Coursera:</h3>
       <ul id="courseralinks">
         {% for name, link in coursera_courses.items() %}
-          <li><a href={{link}} target="_blank"> {{name}}</a></li>
+          <li id="linkbubbles"><a href={{link}} target="_blank"> {{name}}</a></li>
           <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
         {% endfor %}
       </ul>
@@ -65,7 +65,7 @@
       <h3>Khan Academy:</h3>
       <ul id="khanlinks">
         {% for name, link in khan_courses.items() %}
-          <li><a href={{link}} target="_blank"> {{name}}</a></li>
+          <li id="linkbubbles"><a href={{link}} target="_blank"> {{name}}</a></li>
           <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
         {% endfor %}
       </ul>
@@ -74,7 +74,7 @@
       <h3>iTunes U:</h3>
       <ul id="ituneslinks">
         {% for name, link in itunes_courses.items() %}
-          <li><a href={{link}} target="_blank"> {{name}}</a></li>
+          <li id="linkbubbles"><a href={{link}} target="_blank"> {{name}}</a></li>
           <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
         {% endfor %}
       </ul>

@@ -5,6 +5,7 @@ html {
   font-family: "Helvetica";
   font-weight: lighter;
   color: white;
+  text-align: center;
 }
 .mainHeader nav {
   background: #E1E3E4;
@@ -43,6 +44,7 @@ html {
 .mainHeader nav li a {
   margin-right: 5px;
 }
-.myname {
-  text-align: center;
+img {
+  height: 200px;
+  width: 200px;
 }
