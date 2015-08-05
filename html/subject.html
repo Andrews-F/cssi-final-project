@@ -6,7 +6,7 @@
       <title>
         Subject
       </title>
-      <link rel="stylesheet" type="text/css" href="../css/subject.css"/>
+      <!-- <link rel="stylesheet" type="text/css" href="../css/subject.css"/> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="../javascript/allscript.js"></script>
     <title>{{subject.capitalize()}}</title>
@@ -51,28 +51,35 @@
     </div>
     <img id="subjectmainbackground" src="../photos/compscibackground.jpg"/>
     <h1 id="subjecttitle">{{subject.replace("-", " ").title()}}</h1>
-    <h3>Coursera:</h3>
-    <ul id="courseralinks">
-      {% for name, link in coursera_courses.items() %}
-        <li><a href={{link}}> {{name}}</a></li>
-      {% endfor %}
-    </ul>
-    <br>
-    <br>
-    <h3>Khan Academy:</h3>
-    <ul id="khanlinks">
-      {% for name, link in khan_courses.items() %}
-        <li><a href={{link}}> {{name}}</a></li>
-        <li><a h
-      {% endfor %}
-    </ul>
-    <br>
-    <br>
-    <h3>iTunes U:</h3>
-    <ul id="ituneslinks">
-      {% for name, link in itunes_courses.items() %}
-        <li><a href={{link}}> {{name}}</a></li>
-      {% endfor %}
-    </ul>
+
+      <form action = "personal" method = "get">
+      <h3>Coursera:</h3>
+      <ul id="courseralinks">
+        {% for name, link in coursera_courses.items() %}
+          <li><a href={{link}}> {{name}}</a></li>
+          <input type="checkbox" name = "course[]" value="[{{name}},{{link}}]">
+        {% endfor %}
+      </ul>
+      <br>
+      <br>
+      <h3>Khan Academy:</h3>
+      <ul id="khanlinks">
+        {% for name, link in khan_courses.items() %}
+          <li><a href={{link}}> {{name}}</a></li>
+          <input type="checkbox" name = "course[]" value="[{{name}},{{link}}]">
+        {% endfor %}
+      </ul>
+      <br>
+      <br>
+      <h3>iTunes U:</h3>
+      <ul id="ituneslinks">
+        {% for name, link in itunes_courses.items() %}
+          <li><a href={{link}}> {{name}}</a></li>
+          <input type="checkbox" name = "course[]" value="[{{name}},{{link}}]">
+        {% endfor %}
+      </ul>
+      <input type="submit" value="Add Course">
+    </form>
+
   </body>
 </html>
