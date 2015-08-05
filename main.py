@@ -213,9 +213,10 @@ class SubjectHandler(webapp2.RequestHandler):
         courses = self.request.get('courses')
         # for i range(len(courses)):
         #     courses.append(courses[i])
-        template_vars('courses')= courses
+        template_vars['courses'] = courses
 
         template = jinja_environment.get_template('html/subject.html')
+        #add courses to the user signed in
         self.response.out.write(template.render(template_vars))
 
 
