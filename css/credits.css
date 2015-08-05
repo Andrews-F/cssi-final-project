@@ -1,6 +1,10 @@
 html {
+  height: 100%;
+  background: url(../photos/homebackground2.jpg) no-repeat center center;
+  background: cover;
   font-family: "Helvetica";
   font-weight: lighter;
+  color: white;
 }
 .mainHeader nav {
   background: #E1E3E4;
@@ -38,4 +42,7 @@ html {
 
 .mainHeader nav li a {
   margin-right: 5px;
+}
+.myname {
+  text-align: center;
 }
