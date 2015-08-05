@@ -99,7 +99,8 @@ class PersonalHandler(webapp2.RequestHandler):
             if not UserExists(current_user):
                 CreateUser(current_user)
             course_list = GetCourseList(current_user)
-            template_vars = {'nickname': nickname, 'courses': course_list}
+            logout = users.create_logout_url('/')
+            template_vars = {'nickname': nickname, 'courses': course_list, 'logouturl': logout}
             template = jinja_environment.get_template('html/mypage.html')
             self.response.out.write(template.render(template_vars))
 
