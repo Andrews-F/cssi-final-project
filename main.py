@@ -96,6 +96,7 @@ class LoginHandler(webapp2.RequestHandler):
                 CreateUser(new_user)
             else:
                 greeting = "Welcome back {}!".format(new_user.nickname())
+            # link 3 =browse courses
             logout = users.create_logout_url('/')
             link1 = "/personal"
             tag1 = "Go to your personal page"
@@ -103,6 +104,7 @@ class LoginHandler(webapp2.RequestHandler):
             tag2 = "Sign out"
         else:
             greeting = "Welcome to our page! To keep track of your favorite courses, sign in with your Google account:"
+            # link 3 browse courses
             login = users.create_login_url('/login')
             link1 = "/"
             tag1 = "Go back to home"
