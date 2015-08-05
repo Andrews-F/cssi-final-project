@@ -54,7 +54,8 @@ def UserExists(some_user):
 def CreateUser(some_user):
     #put new user into our database
     some_email = some_user.email()
-    courses = [["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]] #temporarily hardcoded
+    courses = []
+    #courses = [["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]] #temporarily hardcoded
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
@@ -135,6 +136,14 @@ class PersonalHandler(webapp2.RequestHandler):
             template = jinja_environment.get_template('html/newlogin.html')
             self.response.out.write(template.render(template_vars))
 
+        def post(self):
+            chosen_course = self.request.get("chosen_course")
+            new_course_list = chosen_course.split("||")
+            print new_course_list
+            self.redirect('/personal')
+
+
+
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
@@ -209,11 +218,11 @@ class SubjectHandler(webapp2.RequestHandler):
             itunes_info = {name: link}
             template_vars['itunes_courses'].update(itunes_info)
 
-
-        courses = self.request.get('courses')
-        # for i range(len(courses)):
-        #     courses.append(courses[i])
-        template_vars['courses'] = courses
+        # courses = []
+        # courses = self.request.get('courses')
+        # # for i range(len(courses)):
+        # #     courses.append(courses[i])
+        # template_vars['courses'] = courses
 
         template = jinja_environment.get_template('html/subject.html')
         #add courses to the user signed in
