@@ -58,10 +58,11 @@ def CreateUser(some_user):
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
-def GetCourseList(some_email):
-    #returns list of courses given an email
+def GetCourseList(some_user):
+    #returns list of courses saved by user
+    some_email = some_user.email()
     user_query = UserInfo.query()
-    filtered_query = user_query.filter(UserInfo.our_user_email = some_email)
+    filtered_query = user_query.filter(UserInfo.our_user_email == some_email)
     list_user = filtered_query.fetch()
     this_user = list_user[0]
     courses = this_user.courses
@@ -95,27 +96,20 @@ class LoginHandler(webapp2.RequestHandler):
 
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
-        new_user = users.get_current_user()
-        if new_user:
-            new_email = new_user.email()
-            if UserExists(new_user):
-                user_query = UserInfo.query()
-                filtered_query = user_query.filter(UserInfo.our_user_email == new_email)
-                list_user = filtered_query.fetch()
-                this_user = list_user[0]
-                these_courses = this_user.courses
-                for course in these_courses:
-                    self.response.write(course)
-            else:
-                CreateUser(new_user)
-            nickname = new_user.nickname()
-            course_list = GetCourseList(new_email)
+        current_user = users.get_current_user()
+        if current_user:
+            nickname = current_user.nickname()
+            if not UserExists(current_user):
+                CreateUser(current_user)
+            course_list = GetCourseList(current_user)
             template_vars = {'nickname': nickname, 'courses': course_list}
             template = jinja_environment.get_template('html/mypage.html')
-            self.response.out.write(template.render())
+            #self.response.out.write(template.render())
+            self.response.out.write(template_vars)
 
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
+            self.response.out.write('%s' % greeting)
 
 
 class HomeHandler(webapp2.RequestHandler):
