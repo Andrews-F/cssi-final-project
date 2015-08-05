@@ -54,7 +54,7 @@ def UserExists(some_user):
 def CreateUser(some_user):
     #put new user into our database
     some_email = some_user.email()
-    courses = ["Calculus", "Physics", "Computer Science"] #temporarily hardcoded
+    courses = [["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]] #temporarily hardcoded
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
