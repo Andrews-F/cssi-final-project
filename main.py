@@ -80,16 +80,27 @@ class MainHandler(webapp2.RequestHandler):
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
-
         if new_user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
             if not UserExists(new_user):
+                greeting = "Welcome {}, looks like you're new here.".format(new_user.nickname())
                 CreateUser(new_user)
+            else:
+                greeting = "Welcome back {}!".format(new_user.nickname())
+            logout = users.create_logout_url('/')
+            link1 = "/personal"
+            tag1 = "Go to your personal page"
+            link2 = logout
+            tag2 = "Sign out"
         else:
-            greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
-        self.response.out.write('%s' % greeting)
-        # template = jinja_environment.get_template('html/login.html')
-        # self.response.out.write(template.render())
+            greeting = "Welcome to our page! To keep track of your favorite courses, sign in with your Google account:"
+            login = users.create_login_url('/login')
+            link1 = "/"
+            tag1 = "Go back to home"
+            link2 = login
+            tag2 = "Sign in"
+        template = jinja_environment.get_template('html/newlogin.html')
+        template_vars = {'home_or_personal': link1, 'h_or_p': tag1, 'login_or_out': link2, 'in_out_tag': tag2, 'greeting': greeting}
+        self.response.out.write(template.render(template_vars))
 
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
