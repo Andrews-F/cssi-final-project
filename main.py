@@ -74,11 +74,8 @@ class UserInfo(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template_vars ={}
-        template_vars["title"] = "Title"
-
         template = jinja_environment.get_template('html/title.html')
-        self.response.out.write(template.render(template_vars))
+        self.response.out.write(template.render())
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
@@ -107,8 +104,11 @@ class PersonalHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_vars))
 
         else:
-            greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
-            self.response.out.write('%s' % greeting)
+            #greeting = ('<a href="%s">Sign in</a>.'%users.create_login_url('/'))
+            login = users.create_login_url('/')
+            template_vars = {'loginurl': login}
+            template = jinja_environment.get_template('html/newlogin.html')
+            self.response.out.write(template.render(template_vars))
 
 
 class HomeHandler(webapp2.RequestHandler):
