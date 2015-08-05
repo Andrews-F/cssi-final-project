@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <title>
-    Your page!
-  </title>
+  <head>
+    <title>My Page</title>
+  </head>
+
   <body>
+    <h1>Welcome {{nickname}}!</h1>
+    <br><br>
+
+    <p>Here are your courses:</p>
+    <ul>
+      {% for course in courses %}
+        <li>{{course}}</li>
+      {% endfor %}
+    </ul>
 
   </body>
+
 </html>

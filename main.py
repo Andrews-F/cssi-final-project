@@ -88,9 +88,10 @@ class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
         if new_user:
+            new_email = new_user.email()
             if UserExists(new_user):
                 user_query = UserInfo.query()
-                filtered_query = user_query.filter(UserInfo.our_user.user_id() == new_user.user_id())
+                filtered_query = user_query.filter(UserInfo.our_user_email == new_email)
                 list_user = filtered_query.fetch()
                 this_user = list_user[0]
                 these_courses = this_user.courses
