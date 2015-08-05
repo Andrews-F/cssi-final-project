@@ -109,9 +109,8 @@ a:hover {
   position: absolute;
   top: 80%;
   width: 100%;
-  border: 1px solid white;
-  background-color: background: #CCC;
-  opacity:0.9; color: black;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 .signup1{
   font-size: 100px;
