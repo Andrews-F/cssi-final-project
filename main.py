@@ -54,7 +54,8 @@ def UserExists(some_user):
 def CreateUser(some_user):
     #put new user into our database
     some_email = some_user.email()
-    courses = [["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]] #temporarily hardcoded
+    courses = [] #temporarily hardcoded
+    # ["Calculus", "#"], ["Physics", "#"], ["Computer Science", "#"]
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
@@ -134,6 +135,9 @@ class PersonalHandler(webapp2.RequestHandler):
             template_vars = {'loginurl': login}
             template = jinja_environment.get_template('html/newlogin.html')
             self.response.out.write(template.render(template_vars))
+
+    def post(self):
+        
 
 
 class SubjectHandler(webapp2.RequestHandler):
