@@ -58,6 +58,15 @@ def CreateUser(some_user):
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
+def GetCourseList(some_email):
+    #returns list of courses given an email
+    user_query = UserInfo.query()
+    filtered_query = user_query.filter(UserInfo.our_user_email = some_email)
+    list_user = filtered_query.fetch()
+    this_user = list_user[0]
+    courses = this_user.courses
+    return courses
+
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
@@ -99,11 +108,14 @@ class PersonalHandler(webapp2.RequestHandler):
                     self.response.write(course)
             else:
                 CreateUser(new_user)
-            #greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
+            nickname = new_user.nickname()
+            course_list = GetCourseList(new_email)
+            template_vars = {'nickname': nickname, 'courses': course_list}
+            template = jinja_environment.get_template('html/mypage.html')
+            self.response.out.write(template.render())
 
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
-
 
 
 class HomeHandler(webapp2.RequestHandler):
