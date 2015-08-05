@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <title>
-    Your page!
-  </title>
+  <head>
+    <title>My Page</title>
+  </head>
+
   <body>
+    <h1>Welcome {{nickname}}!</h1>
+
+    <p>Here are your courses:</p>
+    <ul>
+      {% for course in courses %}
+        <li>{{course}}</li>
+      {% endfor %}
+    </ul>
+    <br>
+    <p><a href={{logouturl}}>Sign out</a></p>
+    <p><a href="home">Browse through courses</a></p>
+    <p><a href="/">Go home</a></p>
 
   </body>
+
 </html>
