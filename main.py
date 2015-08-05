@@ -237,7 +237,7 @@ class CreditHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
-    ('/home', HomeHandler ),
+    ('/home', HomeHandler),
     ('/subject', SubjectHandler),
     ('/credits', CreditHandler),
     ('/personal', PersonalHandler)
