@@ -36,9 +36,6 @@ import webapp2
 from google.appengine.api import users, urlfetch
 from google.appengine.ext import ndb
 
-
-
-
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -46,21 +43,23 @@ jinja_environment = jinja2.Environment(
 
 def UserExists(some_user):
     #does user exist in our database?
-    qry1 = UserInfo.query() #Coulve filtered
-    all_users = qry1.fetch()
+    some_email = some_user.email()
+    user_query = UserInfo.query() #Could've filtered
+    all_users = user_query.fetch()
     for individual in all_users:
-        if individual.our_user.user_id() == some_user.user_id():
+        if individual.our_user_email == some_email:
             return True
     return False
 
 def CreateUser(some_user):
-    courses = []
-    name = UserInfo(our_user=some_user,courses=courses)
+    #put new user into our database
+    some_email = some_user.email()
+    courses = ["Calculus", "Physics", "Computer Science"] #temporarily hardcoded
+    name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
-
 class UserInfo(ndb.Model):
-    our_user = ndb.UserProperty(required=True)
+    our_user_email = ndb.StringProperty(required=True)
     courses = ndb.StringProperty(repeated=True)
 
 class MainHandler(webapp2.RequestHandler):
@@ -75,11 +74,10 @@ class LoginHandler(webapp2.RequestHandler):
     def get(self):
         new_user = users.get_current_user()
 
-        if not UserExists(new_user):
-            CreateUser(new_user)
-
         if new_user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(new_user.nickname(), users.create_logout_url('/')))
+            if not UserExists(new_user):
+                CreateUser(new_user)
         else:
             greeting = ('<a href="%s">Sign in or register</a>.'%users.create_login_url('/'))
         self.response.out.write('%s' % greeting)
@@ -91,10 +89,10 @@ class PersonalHandler(webapp2.RequestHandler):
         new_user = users.get_current_user()
         if new_user:
             if UserExists(new_user):
-                qry1 = UserInfo.query()
-                qry2 = qry1.filter(UserInfo.our_user == new_user)
-                list_users = qry2.fetch()
-                this_user = list_users[0]
+                user_query = UserInfo.query()
+                filtered_query = user_query.filter(UserInfo.our_user.user_id() == new_user.user_id())
+                list_user = filtered_query.fetch()
+                this_user = list_user[0]
                 these_courses = this_user.courses
                 for course in these_courses:
                     self.response.write(course)
