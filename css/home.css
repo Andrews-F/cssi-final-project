@@ -251,3 +251,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     -webkit-transform: scale(1.1);
             transform: scale(1.5);
   }
+.login{
+    font-size: 30px;
+    font-family: "Helvetica";
+    font-weight: lighter;
+    color: rgb(246, 246, 246);
+    line-height: 1.2;
+    float: right;
+    margin-top: 10px;
+    border: none;
+    padding: 15px;
+    }
