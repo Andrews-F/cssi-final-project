@@ -146,12 +146,6 @@ class PersonalHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_vars))
 
         else:
-            #print "ELSE Checkpoint"
-            #greeting = ('<a href="%s">Sign in</a>.'%users.create_login_url('/'))
-            # login = users.create_login_url('/')
-            # template_vars = {'loginurl': login}
-            # template = jinja_environment.get_template('html/newlogin.html')
-            # self.response.out.write(template.render(template_vars))
             self.redirect('/login')
 
     def post(self):
