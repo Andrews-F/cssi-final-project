@@ -27,9 +27,14 @@
     </div>
     <p>Here are your courses:</p>
     <ul>
-      {% for course in courses %}
-        <li><a href={{course.split("||")[1]}} target="_blank"> {{course.split("||")[0]}}</a></li>
-      {% endfor %}
+      <form>
+        {% for course in courses %}
+          <li><a href={{course.split("||")[1]}} target="_blank"> {{course.split("||")[0]}}</a>
+          <input type="radio" name = "delete_this" value="{{course}}"></li>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Delete Course">
+      </form>
     </ul>
     <br>
     <p><a id="signout" href={{logouturl}}>Sign out</a></p>

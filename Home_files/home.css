@@ -211,7 +211,7 @@ h3{
           transform: scale(1.5);
 }
 body{
-  width: 100%;
+  max-width: 1000px;
 }
 .mathbubbles,
 .sciencebubbles,
@@ -220,45 +220,48 @@ body{
   display: none;
   opacity: 0;
 }
+.main-nav {
+  width: 100%;
+  text-align: middle;
+}
+.main-nav {
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 300px;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+}
 .mainwrapper {
-  text-align: center;
-  padding-top: 20%;
+  border-radius: 1em;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) }
 }
-#linkbubbles {
-  border: 1px solid white;
-  border-radius: 50%;
-	width: 220px;
-	height: 220px;
+.main-nav > div {
+  box-sizing: border-box;
+  margin-top: 35px;
+  width: 50%;
+  height: 30%;
   text-align: center;
-  background: rgb(30,87,153);
-background: -moz-linear-gradient(top, rgb(30,87,153) 0%, rgb(41,137,216) 50%, rgb(32,124,202) 51%, rgb(125,185,232) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(30,87,153)), color-stop(50%,rgb(41,137,216)), color-stop(51%,rgb(32,124,202)), color-stop(100%,rgb(125,185,232)));
-background: -webkit-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: -o-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: -ms-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: linear-gradient(to bottom, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
-  display: inline-block;
+  font-size: 30px;
+  float: left;
 }
-.innertext {
-  font-size: 25px;
-  padding-top: 11px;
-  margin-top: 9px;
+#Math, #Science {
+  height: 20%;
+}
+/* Change this to change the height of math/science text */
+#Math > div, #Science > div {
+}
+#History, #Math {
+}
+/* Change this to change the height of comp/history */
+#Comp > div, #History > div {
+
 }
 
-.innertext:hover{
-    opacity: 2;
-    -webkit-transform: scale(1.1);
-            transform: scale(1.5);
-  }
-.login{
-    font-size: 30px;
-    font-family: "Helvetica";
-    font-weight: lighter;
-    color: rgb(246, 246, 246);
-    line-height: 1.2;
-    float: right;
-    margin-top: 10px;
-    border: none;
-    padding: 15px;
-    }
+#Math, #Science, #History, #Comp {
+  cursor: pointer;
+}
