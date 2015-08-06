@@ -152,22 +152,29 @@ class PersonalHandler(webapp2.RequestHandler):
             self.redirect('/login')
 
     def post(self):
-        chosen_course = self.request.get("chosen_course")
+        #chosen_course = self.request.get("chosen_course")
         delete_this = self.request.get("delete_this")
         current_user = users.get_current_user()
         if current_user:
             if UserExists(current_user):
                 current_email = current_user.email()
-                UpdateCourses(current_email, chosen_course)
+                #UpdateCourses(current_email, chosen_course)
                 DeleteCourses(current_email, delete_this)
             self.redirect('/personal')
         else:
-            print "there is no current user"
             self.redirect('/login')
 
 class AddHandler(webapp2.RequestHandler):
     def post(self):
         chosen_course = self.request.get("chosen_course")
+        current_user = users.get_current_user()
+        if current_user:
+            if UserExists(current_user):
+                current_email = current_user.email()
+                UpdateCourses(current_email, chosen_course)
+            self.redirect('/personal')
+        else:
+            self.redirect('/login')
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
