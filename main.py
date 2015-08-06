@@ -54,8 +54,8 @@ def UserExists(some_user):
 def CreateUser(some_user):
     #put new user into our database
     some_email = some_user.email()
-    #courses = []
-    courses = ["Calculus||#", "Physics||#", "Computer Science||#"] #temporarily hardcoded
+    courses = []
+    #courses = ["Calculus||#", "Physics||#", "Computer Science||#"] #temporarily hardcoded
     name = UserInfo(our_user_email=some_email, courses=courses)
     name.put()
 
@@ -124,7 +124,6 @@ class LoginHandler(webapp2.RequestHandler):
             tag2 = "Sign out"
         else:
             greeting = "Welcome to our page! To keep track of your favorite courses, sign in with your Google account:"
-            # link 3 browse courses
             login = users.create_login_url('/login')
             link1 = "/"
             tag1 = "Go back to home"
@@ -152,13 +151,11 @@ class PersonalHandler(webapp2.RequestHandler):
             self.redirect('/login')
 
     def post(self):
-        #chosen_course = self.request.get("chosen_course")
         delete_this = self.request.get("delete_this")
         current_user = users.get_current_user()
         if current_user:
             if UserExists(current_user):
                 current_email = current_user.email()
-                #UpdateCourses(current_email, chosen_course)
                 DeleteCourses(current_email, delete_this)
             self.redirect('/personal')
         else:
@@ -248,7 +245,6 @@ class SubjectHandler(webapp2.RequestHandler):
             template_vars['itunes_courses'].update(itunes_info)
 
         template = jinja_environment.get_template('html/subject.html')
-        #add courses to the user signed in
         self.response.out.write(template.render(template_vars))
 
 
