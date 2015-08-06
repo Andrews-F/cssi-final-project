@@ -1,7 +1,5 @@
 html {
   height: 120%;
-  background: url(../photos/indexcover.jpg) no-repeat center center;
-  background-size: cover;
   font-family: "Helvetica";
   font-weight: lighter;
   background-attachment: fixed;
@@ -55,10 +53,10 @@ a:active {
   color: gold; text-decoration: none;
 }
 a:visited {
-  color: rgb(246, 246, 246); text-decoration: none;
+  color: white; text-decoration: none;
 }
 a:hover {
-  color: white; text-decoration: none;
+  color: #01172D; text-decoration: none;
 }
 .Welcome {
   font-size: 700%;
@@ -84,7 +82,7 @@ a:hover {
   font-size: 30px;
   font-family: "Helvetica";
   font-weight: lighter;
-  color: rgb(246, 246, 246);
+  color: #E1E3E4;
   line-height: 1.2;
   float: right;
   margin-top: 10px;
@@ -224,9 +222,9 @@ a:hover {
   border: 1px solid white;
   border-radius: 5px;
   margin-top: 810px;
-  background: lightblue;
+  background: white;
   background-color: #CCC;
-  opacity: .7;
+  opacity: .4;
   padding-top: 25px;
   padding-bottom: 25px;
 }
