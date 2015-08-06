@@ -88,8 +88,9 @@ def DeleteCourses(some_email, delete_this):
     #deletes a course from a users' list
     current_user = GetUserInfo(some_email)
     list_of_courses = current_user.courses
-    list_of_courses.remove(delete_this)
-    current_user.put()
+    if len(list_of_courses) != 0:
+        list_of_courses.remove(delete_this)
+        current_user.put()
 
 class UserInfo(ndb.Model):
     our_user_email = ndb.StringProperty(required=True)
