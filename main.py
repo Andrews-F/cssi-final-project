@@ -167,7 +167,9 @@ class PersonalHandler(webapp2.RequestHandler):
             print "there is no current user"
             self.redirect('/login')
 
-class 
+class AddHandler(webapp2.RequestHandler):
+    def get(self):
+        self.respond.write('hey')
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
