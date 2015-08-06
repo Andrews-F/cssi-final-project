@@ -6,6 +6,7 @@ html {
   font-weight: lighter;
   background-attachment: fixed;
 }
+
 h3{
   background-color: background: #CCC;
   opacity:0.7; color: black; position: relative;
@@ -80,7 +81,7 @@ a:hover {
   width: 417px;
   height: 63px;
   z-index: 999px;
-}s
+}
 .signup1{
   font-size: 100px;
   font-family: "Helvetica";
@@ -194,5 +195,16 @@ a:hover {
 	}
    .Welcome {
      font-size: 400%;
-     top: 40%
+     top: 40%;
   }
+}
+
+#description {
+  width: 100%;
+  color: white;
+  font-size: 120%;
+  border: 3px solid white;
+  border-radius: 5px;
+  margin-top: 50px;
+  text-align: center;
+}
