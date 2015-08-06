@@ -2,7 +2,99 @@ html {
   height: 200%;
   background: url(../photos/subjectbackground2.jpg) no-repeat center center;
   background-size: cover;
+  font-family: "Helvetica";
+  font-weight: lighter;
 }
+.mainHeader nav {
+  background: #E1E3E4;
+  background-color: background: #CCC;
+  opacity:0.6; color: #E1E3E4;
+	font-size: 1.343em;
+	height: 50px;
+	line-height: 40px;
+	margin: 0 auto 30px auto;
+	text-align: center;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+  margin: -10px;
+  margin-top: -22px;
+}
+.mainHeader nav ul li {
+	float: left;
+	display: inline;
+}
+
+.mainHeader nav a:link, .mainHeader nav a:visited {
+	color: #01172D;
+	display: inline-block;
+	height: 40px;
+	padding: 5px 23px;
+	text-decoration: none;
+}
+.mainHeader nav a:hover, .mainHeader nav a:active,
+.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+	background: #008AE6;
+	color: #fff;
+	text-shadow: none !important;
+}
+
+.mainHeader nav li a {
+  margin-right: 5px;
+}
+img {
+  height: 200px;
+  width: 200px;
+}
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+  .mainHeader nav {
+		background: #E1E3E4;
+		font-size: 1.143em;
+		height: 160px;
+		line-height: 30px;
+		margin-bottom: 0;
+    padding-top: 15px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+    text-align: middle;
+	}
+  .mainHeader nav ul {
+		list-style: none;
+		margin: 0 auto;
+		padding-left: 0;
+	}
+
+	.mainHeader nav li {
+		margin-left: 0 auto;
+		width: 100%;
+	}
+
+	.mainHeader nav a:link, .mainHeader nav a:visited {
+		color: black;
+		display: block;
+		height: 30px;
+		padding: 5px 0;
+		text-decoration: none;
+	}
+
+	.mainHeader nav a:active,
+	.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+		background: #008AE6;
+		color: white;
+		text-shadow: none !important;
+	}
+
+	.mainHeader nav li a {
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
 h3{
   background-color: background: #CCC;
   opacity:0.9; color: black; position: relative;
