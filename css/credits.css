@@ -1,5 +1,5 @@
 html {
-  height: 100%;
+  height: auto%;
   background: url(../photos/homebackground2.jpg) no-repeat center center;
   background: cover;
   font-family: "Helvetica";
@@ -44,6 +44,59 @@ html {
 .mainHeader nav li a {
   margin-right: 5px;
 }
+img {
+  height: 200px;
+  width: 200px;
+}
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+  .mainHeader nav {
+		background: #E1E3E4;
+		font-size: 1.143em;
+		height: 160px;
+		line-height: 30px;
+		margin-bottom: 0;
+    padding-top: 15px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+    text-align: middle;
+	}
+  .mainHeader nav ul {
+		list-style: none;
+		margin: 0 auto;
+		padding-left: 0;
+	}
+
+	.mainHeader nav li {
+		margin-left: 0 auto;
+		width: 100%;
+	}
+
+	.mainHeader nav a:link, .mainHeader nav a:visited {
+		color: black;
+		display: block;
+		height: 30px;
+		padding: 5px 0;
+		text-decoration: none;
+	}
+
+	.mainHeader nav a:active,
+	.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+		background: #008AE6;
+		color: white;
+		text-shadow: none !important;
+	}
+
+	.mainHeader nav li a {
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
 img {
   height: 200px;
   width: 200px;

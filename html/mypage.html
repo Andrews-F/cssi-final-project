@@ -4,14 +4,29 @@
     <title>
       My Page
     </title>
-    <!-- <link rel="stylesheet" type="text/css" href="../css/mypage.css"/> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="../javascript/allscript.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="../css/mypage.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../javascript/allscript.js"></script>
   </head>
+  <div style="min-width: auto; margin: 0 auto;">
+  <body>
+    <div class="tsop">
+      <a href="/">
+      </a>
+      <header class="mainHeader">
+    		<nav><ul>
+    			<li class="active"><a href="#">Home</a></li>
+    			<li><a href="credits" target="_blank">Credits/References</a></li>
+    			<li><a href="personal">My Page</a></li>
+    			<li><a href="#">Extrablah</a></li>
+    		</ul></nav>
+    	</header>
+    </div>
 
   <body>
-    <h1>Welcome {{nickname}}!</h1>
-
+    <div id="welcomeuser">
+      <h1>Welcome {{nickname}}!</h1>
+    </div>
     <p>Here are your courses:</p>
     <ul>
       {% for course in courses %}
@@ -22,7 +37,10 @@
     <p><a href={{logouturl}}>Sign out</a></p>
     <p><a href="home">Browse through courses</a></p>
     <p><a href="/">Go home</a></p>
-
+    <video autoplay loop poster="../photos/mypagevideobackground.mp4" id="bgvid">
+    <source src="../photos/mypagevideobackground.webm" type="video/webm">
+    <source src="../photos/mypagevideobackground.mp4" type="video/mp4">
+    </video>
   </body>
 
 </html>
