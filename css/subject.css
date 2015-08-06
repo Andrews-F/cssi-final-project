@@ -1,6 +1,6 @@
 html {
   height: 100%;
-  background: url(../photos/subjectbackground1.jpg) no-repeat center center;
+  background: url(../photos/bluebackground.jpg) no-repeat center center;
   background-size: cover;
   font-family: "Helvetica";
   font-weight: lighter;
@@ -55,23 +55,27 @@ img {
   width: 200px;
 }
 #linkbubbles {
-  border: 1px solid white;
-  border-radius: 50%;
-	width: 220px;
-	height: 220px;
-  text-align: center;
-  background-color: background: #CCC;
-  background: white;
-  opacity:0.4; color: #E1E3E4;
   display: inline-block;
 }
 a{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 #innertext{
-  padding-top: 100px;
+  padding-top: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   text-decoration: none;
+}
+#formwrapper1 {
+  height: 100%;
+  width: 100%;
+  background: url(../photos/homecover2.jpg) no-repeat center center;
+  background: cover; opacity: 0.5;
+}
+#buttonwrapper {
+  border-bottom: 1px solid white;
 }
 @media only screen and (min-width : 150px) and (max-width : 780px)
 {
@@ -258,7 +262,9 @@ h1{
   height: 100%;
 }
 #subjecttitle{
+  width: 100%;
   color: white;
+  text-align: center;
 }
 #formwrapper1 {
   background: red;

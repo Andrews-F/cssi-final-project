@@ -23,37 +23,51 @@
     		</ul></nav>
     	</header>
     </div>
-    <h1 id="subjecttitle">{{subject.replace("-", " ").title()}}</h1>
+    <div id="subjecttitle">
+    <h1>{{subject.replace("-", " ").title()}}</h1>
+  </div>
 <div id="formwrapper1">
     <form action="add" method="post">
+      <div id="topbar1">
       <h3>Coursera:</h3>
       <ul id="courseralinks">
         <div id="linkbuttonwrapper">
           {% for name, link in coursera_courses.items() %}
+          <div id="buttonwrapper">
             <li id="linkbubbles"><div id="innertext"><a href={{link}} target="_blank"> {{name}}</a></div></li>
             <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
+          </div>
           {% endfor %}
         </div>
+      </div>
       </ul>
     </div>
       <br>
       <br>
+    <div id="formwrapper1">
       <h3>Khan Academy:</h3>
       <ul id="khanlinks">
         {% for name, link in khan_courses.items() %}
+        <div id="buttonwrapper">
           <li id="linkbubbles"><div id="innertext"><a href={{link}} target="_blank"> {{name}}</a></div></li>
           <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
+        </div>
         {% endfor %}
       </ul>
+    </div>
       <br>
       <br>
+    <div id="formwrapper1">
       <h3>iTunes U:</h3>
       <ul id="ituneslinks">
         {% for name, link in itunes_courses.items() %}
+        <div id="buttonwrapper">
           <li id="linkbubbles"><div id="innertext"><a href={{link}} target="_blank"> {{name}}</a></div></li>
           <input type="radio" name = "chosen_course" value="{{name}}||{{link}}">
+        </div>
         {% endfor %}
       </ul>
+    </div>
       <input type="submit" value="Add Course">
     </form>
     <div></div>

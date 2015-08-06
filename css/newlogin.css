@@ -3,6 +3,7 @@ html{
   background: url(../photos/subjectbackground1.jpg) no-repeat center center;
   font-family: "Helvetica";
   font-weight: lighter;
+  background-attachment: fixed;
 }
 a {
   text-decoration: none;
@@ -21,7 +22,7 @@ a {
   text-align: center;
   color: white;
   font-size: 20px;
-  line-height: 3.0;
+  line-height: 4.0;
 }
 .mainHeader nav {
   background: #E1E3E4;
