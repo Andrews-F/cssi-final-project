@@ -244,6 +244,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   font-size: 25px;
   padding-top: 11px;
   margin-top: 9px;
+  cursor: pointer;
 }
 
 .innertext:hover{
