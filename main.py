@@ -258,5 +258,6 @@ app = webapp2.WSGIApplication([
     ('/home', HomeHandler),
     ('/subject', SubjectHandler),
     ('/credits', CreditHandler),
-    ('/personal', PersonalHandler)
+    ('/personal', PersonalHandler),
+    ('/add', AddHandler)
 ], debug=True)
