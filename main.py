@@ -80,12 +80,15 @@ def GetUserInfo(some_email):
 def UpdateCourses(some_email, new_course):
     #adds a course to list of courses of a specific user
     current_user = GetUserInfo(some_email)
-    print "Got user info"
     list_of_courses = current_user.courses
-    print "created list of courses: {}".format(list_of_courses)
-    print new_course
     list_of_courses.append(new_course)
-    print "extended new course {}".format(current_user.courses)
+    current_user.put()
+
+def DeleteCourses(some_email, delete_this):
+    #deletes a course from a users' list
+    current_user = GetUserInfo(some_email)
+    list_of_courses = current_user.courses
+    list_of_courses.remove(delete_this)
     current_user.put()
 
 class UserInfo(ndb.Model):
@@ -150,27 +153,26 @@ class PersonalHandler(webapp2.RequestHandler):
 
     def post(self):
         chosen_course = self.request.get("chosen_course")
+        delete_this = self.request.get("delete_this")
         print chosen_course
-        # new_course_list = chosen_course.split("||")
-        #returns [name, link]
         current_user = users.get_current_user()
         if current_user:
             if UserExists(current_user):
-                print "current user exists"
                 current_email = current_user.email()
                 UpdateCourses(current_email, chosen_course)
+                DeleteCourses(current_email, delete_this)
             else:
-                print "current user does not exits"
             self.redirect('/personal')
         else:
             print "there is no current user"
             self.redirect('/login')
 
+class 
 
 class SubjectHandler(webapp2.RequestHandler):
     def get(self):
         template_vars = {}
-        template_vars['subject'] = self.request.get("search", "algebra")
+        template_vars['subject'] = self.request.get("search", "life")
 
         template_vars['khan_courses'] = {}
         khan_links = []

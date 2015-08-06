@@ -27,7 +27,7 @@
     </div>
     <p>Here are your courses:</p>
     <ul>
-      <form>
+      <form action="personal" method="post">
         {% for course in courses %}
           <li><a href={{course.split("||")[1]}} target="_blank"> {{course.split("||")[0]}}</a>
           <input type="radio" name = "delete_this" value="{{course}}"></li>
