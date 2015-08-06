@@ -8,6 +8,12 @@ html {
   text-align: center;
   background-attachment: fixed;
 }
+.biopic:hover{
+  opacity: 2;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.5);
+
+}
 #meet {
   font-size: 40px;
 }

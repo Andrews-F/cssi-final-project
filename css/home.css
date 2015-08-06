@@ -259,7 +259,7 @@ body{
   border-radius: 300px;
   width: 250px;
   height: 250px;
-  text-align: right;
+  text-align: center;
 }
 .mainwrapper {
   border-radius: 1em;
@@ -280,18 +280,16 @@ body{
   float: left;
 }
 #Math, #Science {
-  border-bottom: none;
+  height: 20%;
 }
 /* Change this to change the height of math/science text */
 #Math > div, #Science > div {
-  margin-top: none;
 }
 #History, #Math {
-  border-right: none;
 }
 /* Change this to change the height of comp/history */
 #Comp > div, #History > div {
-  margin-top: 10px;
+
 }
 
 #Math, #Science, #History, #Comp {
