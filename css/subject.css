@@ -1,9 +1,10 @@
 html {
-  height: 200%;
-  background: url(../photos/subjectbackground2.jpg) no-repeat center center;
+  height: 100%;
+  background: url(../photos/subjectbackground1.jpg) no-repeat center center;
   background-size: cover;
   font-family: "Helvetica";
   font-weight: lighter;
+  background-attachment: fixed;
 }
 .mainHeader nav {
   background: #E1E3E4;
@@ -52,18 +53,19 @@ img {
 	width: 220px;
 	height: 220px;
   text-align: center;
-  background: rgb(30,87,153);
-background: -moz-linear-gradient(top, rgb(30,87,153) 0%, rgb(41,137,216) 50%, rgb(32,124,202) 51%, rgb(125,185,232) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(30,87,153)), color-stop(50%,rgb(41,137,216)), color-stop(51%,rgb(32,124,202)), color-stop(100%,rgb(125,185,232)));
-background: -webkit-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: -o-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: -ms-linear-gradient(top, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-background: linear-gradient(to bottom, rgb(30,87,153) 0%,rgb(41,137,216) 50%,rgb(32,124,202) 51%,rgb(125,185,232) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+  background-color: background: #CCC;
+  background: white;
+  opacity:0.4; color: #E1E3E4;
   display: inline-block;
+}
+a{
+  text-decoration: none;
+  color: black;
 }
 #innertext{
   padding-top: 100px;
+  text-decoration: none;
+}
 @media only screen and (min-width : 150px) and (max-width : 780px)
 {
   .mainHeader nav {
@@ -113,11 +115,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 	}
-h3{
-  background-color: background: #CCC;
-  opacity:0.9; color: black; position: relative;
-  font-family: "helvetica";
-  font-weight:lighter;
+h3 {
+  color: white;
 }
 .top {
   background-color: background: #CCC;
@@ -253,4 +252,7 @@ h1{
 }
 #subjecttitle{
 
+}
+#formwrapper1 {
+  background: red;
 }
