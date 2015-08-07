@@ -32,6 +32,7 @@
       <p>Here are your courses:</p>
     </div>
     <ul>
+      <div id="centering1"
       <form action="personal" method="post">
         {% for course in courses %}
           <li><a href={{course.split("||")[1]}} target="_blank"> {{course.split("||")[0]}}</a>
@@ -39,6 +40,7 @@
         {% endfor %}
         <br>
         <input type="submit" value="Delete Course">
+        </div>
       </form>
     </ul>
   </div>
