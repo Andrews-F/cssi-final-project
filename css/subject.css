@@ -68,12 +68,7 @@ a{
   padding-bottom: 10px;
   text-decoration: none;
 }
-#formwrapper1 {
-  height: 100%;
-  width: 100%;
-  background: url(../photos/homecover2.jpg) no-repeat center center;
-  background: cover; opacity: 0.5;
-}
+
 #buttonwrapper {
   border-bottom: 1px solid white;
 }
