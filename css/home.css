@@ -5,6 +5,10 @@ html {
   font-family: "Helvetica";
   font-weight: lighter;
 }
+#linkbubbles{
+  cursor: pointer;
+
+}
 .mainHeader nav {
   background: #E1E3E4;
   background-color: background: #CCC;
